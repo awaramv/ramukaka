@@ -22,4 +22,4 @@ COPY tasker.py ./tasker.py
 COPY file_manager.py ./file_manager.py
 
 # Specify the command to run the application
-CMD ["python", "task.py"]
+CMD ["python", "tasker.py"]
