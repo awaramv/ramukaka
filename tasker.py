@@ -7,7 +7,7 @@ import file_manager
 
 def read_the_BKW():
     try:
-        response = requests.get("https://growattreader:80/update_data")
+        response = requests.get("https://growattreader:5000/update_data")
         if response.status_code == 200:
             data = response.json()
             print(f"Data read successfully: {data}")
