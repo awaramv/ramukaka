@@ -11,7 +11,7 @@ WORKDIR /home/ramukaka
 COPY requirements.txt requirements.txt
 
 # Install the Python dependencies specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Create the /home/growattreader/logs directory in the container
 RUN mkdir -p logs
