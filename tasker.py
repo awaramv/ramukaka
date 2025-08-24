@@ -19,7 +19,7 @@ def read_the_BKW():
         print(f"An error occurred while reading data: {e}")
 
 
-schedule.every().day.at("23:00").do(read_the_BKW)
+schedule.every().day.at("23:15").do(read_the_BKW)
 
 
 while True:
