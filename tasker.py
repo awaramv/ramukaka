@@ -4,6 +4,8 @@ import datetime
 import requests
 import file_manager
 
+LOG_FILE = "./logs/scheduler.txt"
+
 
 def read_the_BKW():
     try:
@@ -13,6 +15,8 @@ def read_the_BKW():
             print(f"Data read successfully: {data}")
             file_manager.sync_BKW_data_with_drive()
             print(f"Data synced with Google Drive at {datetime.datetime.now()}")
+            with open(LOG_FILE, "a+") as f:
+                f.write(f"Data read from BKW and Saved to Google Drive at : {now}\n")
         else:
             print(f"Failed to read data, status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
@@ -22,14 +26,14 @@ def read_the_BKW():
 schedule.every().day.at("23:30").do(read_the_BKW)
 
 
-def write_current_datetime_to_file(filename="current_datetime.txt"):
+def write_current_datetime_to_file():
     now = datetime.datetime.now()
-    with open(filename, "w") as f:
+    with open(LOG_FILE, "a+") as f:
         f.write(f"Scheduler checked for the Jobs last at : {now}\n")
-    print(f"Date and time written at {now} to {filename}")
+    print(f"Date and time written at {now} to {LOG_FILE}")
 
 
 while True:
-    write_current_datetime_to_file(filename="./logs/current_datetime.txt")
+    write_current_datetime_to_file()
     schedule.run_pending()
     time.sleep(60)
