@@ -4,7 +4,7 @@ import shutil
 def sync_BKW_data_with_drive():
     src_file = "/home/awara/dockersinit/logs/daily_detailed_power_output.csv"
     dest_file = "/home/awara/mnt/GoogleDrive/PiDumps/daily_detailed_power_output.csv"
-    
+
     try:
         shutil.copy(src_file, dest_file)
         print(f"File synced successfully from {src_file} to {dest_file}")
