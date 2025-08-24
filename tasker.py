@@ -7,7 +7,7 @@ import file_manager
 
 def read_the_BKW():
     try:
-        response = requests.get("https://growattreader:5000/update_data")
+        response = requests.get("http://growattreader:5000/update_data")
         if response.status_code == 200:
             data = response.json()
             print(f"Data read successfully: {data}")
@@ -19,7 +19,7 @@ def read_the_BKW():
         print(f"An error occurred while reading data: {e}")
 
 
-schedule.every().day.at("23:15").do(read_the_BKW)
+schedule.every().day.at("23:30").do(read_the_BKW)
 
 
 while True:
