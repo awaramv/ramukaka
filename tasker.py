@@ -8,6 +8,7 @@ LOG_FILE = "./logs/scheduler.txt"
 
 
 def read_the_BKW():
+    now = datetime.datetime.now()
     try:
         response = requests.get("http://growattreader:5000/update_data")
         if response.status_code == 200:
@@ -19,6 +20,8 @@ def read_the_BKW():
                 f.write(f"Data read from BKW and Saved to Google Drive at : {now}\n")
         else:
             print(f"Failed to read data, status code: {response.status_code}")
+            with open(LOG_FILE, "a+") as f:
+                f.write(f"Failed to read Data read from BKW  : {now}\n")
     except requests.exceptions.RequestException as e:
         print(f"An error occurred while reading data: {e}")
 
