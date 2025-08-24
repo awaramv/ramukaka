@@ -1,5 +1,6 @@
 # Use ARM64-compatible Python image for Raspberry Pi
-FROM python:3.13-slim
+# FROM python:3.13-slim
+FROM --platform=linux/arm64 python:3.11-slim
 
 # Create the /home/Chatbot directory in the container
 RUN mkdir -p /home/ramukaka
