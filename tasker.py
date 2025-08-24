@@ -22,7 +22,14 @@ def read_the_BKW():
 schedule.every().day.at("23:30").do(read_the_BKW)
 
 
+def write_current_datetime_to_file(filename="current_datetime.txt"):
+    now = datetime.datetime.now()
+    with open(filename, "w") as f:
+        f.write(f"Scheduler checked for the Jobs last at : {now}\n")
+    print(f"Date and time written at {now} to {filename}")
+
+
 while True:
+    write_current_datetime_to_file(filename="./logs/current_datetime.txt")
     schedule.run_pending()
     time.sleep(60)
-    # Sleep for 60 seconds before checking again
