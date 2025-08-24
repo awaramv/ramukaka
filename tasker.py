@@ -26,7 +26,7 @@ def read_the_BKW():
         print(f"An error occurred while reading data: {e}")
 
 
-schedule.every().day.at("00:00").do(read_the_BKW)
+schedule.every().day.at("22:11").do(read_the_BKW)
 
 
 def write_current_datetime_to_file():
