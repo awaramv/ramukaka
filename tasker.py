@@ -9,13 +9,12 @@ def read_the_BKW_daily():
         response = requests.get("http://growattreader:5000/update_daily_data")
         if response.status_code == 200:
             file_manager.log_it("BKW-daily", "Success")
-            file_manager.sync_BKW_data_with_drive()
+            file_manager.sync_BKW_data_with_drive("BKW-daily")
 
         else:
-            print(f"Failed to read data, status code: {response.status_code}")
-            file_manager.log_it("BKW", "Failure")
+            file_manager.log_it("BKW-daily", "Failure")
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred while reading data: {e}")
+        file_manager.log_it("BKW-daily", "Exception", Exception=e)
 
 
 def read_the_BKW_aggregated():
@@ -23,13 +22,13 @@ def read_the_BKW_aggregated():
         response = requests.get("http://growattreader:5000/update_aggregated_data")
         if response.status_code == 200:
             file_manager.log_it("BKW-agg", "Success")
-            file_manager.sync_BKW_data_with_drive()
+            file_manager.sync_BKW_data_with_drive("BKW-agg")
 
         else:
             print(f"Failed to read data, status code: {response.status_code}")
-            file_manager.log_it("BKW", "Failure")
+            file_manager.log_it("BKW-agg", "Failure")
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred while reading data: {e}")
+        file_manager.log_it("BKW-daily", "Exception", Exception=e)
 
 
 schedule.every(10).minutes.do(read_the_BKW_daily)
