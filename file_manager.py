@@ -4,24 +4,23 @@ import datetime
 LOG_FILE = "./logs/scheduler.txt"
 BKA_DAILY_FILE = "./logs/daily_detailed_power_output.csv"
 BKA_AGG_FILE = "./logs/aggregated_power_output.csv"
-DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
+# DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
+DESTINATION = "../mnt/GoogleDrive/PiDumps"
 
 
 def sync_BKW_data_with_drive(mode):
     if mode == "BKW-daily":
         src_file = BKA_DAILY_FILE
-        dest = DESTINATION
         try:
-            shutil.copy(src_file, dest)
+            shutil.copy(src_file, DESTINATION)
             log_it("DriveSync-BKW-daily", "Success")
         except Exception as e:
             log_it("DriveSync-BKW-daily", "Exception", Exception=e)
 
     if mode == "BKW-agg":
         src_file = BKA_AGG_FILE
-        dest = DESTINATION
         try:
-            shutil.copy(src_file, dest)
+            shutil.copy(src_file, DESTINATION)
             log_it("DriveSync-BKW-agg",  "Success")
         except Exception as e:
             log_it("DriveSync-BKW-agg", "Exception", Exception=e)
@@ -85,10 +84,9 @@ def log_it(mode, outcome, Exception=None):
 def sync_log_data_with_drive():
     now = datetime.datetime.now()
     src_file = "/home/awara/dockersinit/logs/scheduler.txt"
-    dest = "/home/awara/mnt/GoogleDrive/PiDumps"
 
     try:
-        shutil.copy(src_file, dest)
+        shutil.copy(src_file, DESTINATION)
         print(f"Log file synced successfully at {now}")
         log_it("DriveSync", "Success")
     except Exception as e:
