@@ -19,8 +19,8 @@ RUN mkdir -p logs
 VOLUME ["/home/ramukaka/logs"]
 
 # Copy the application files into the container
-COPY tasker.py ./tasker.py
-COPY file_manager.py ./file_manager.py
+COPY butler.py ./butler.py
+COPY cleaner.py ./cleaner.py
 
 # Specify the command to run the application
-CMD ["python", "tasker.py"]
+CMD ["python", "butler.py"]
