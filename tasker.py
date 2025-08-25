@@ -31,8 +31,8 @@ def read_the_BKW_aggregated():
         file_manager.log_it("BKW-daily", "Exception", Exception=e)
 
 
-schedule.every(10).minutes.do(read_the_BKW_daily)
-schedule.every(10).minutes.do(read_the_BKW_aggregated)
+schedule.every(2).minutes.do(read_the_BKW_daily)
+schedule.every(2).minutes.do(read_the_BKW_aggregated)
 schedule.every(1).hours.do(file_manager.sync_log_data_with_drive)
 
 while True:
