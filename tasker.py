@@ -21,6 +21,8 @@ def read_the_BKW():
 
 schedule.every(10).minutes.do(read_the_BKW)
 
+schedule.every(1).hours.do(file_manager.sync_log_data_with_drive)
+
 while True:
     file_manager.log_it("Pulse", "Success")
     schedule.run_pending()

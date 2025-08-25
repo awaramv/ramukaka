@@ -31,7 +31,7 @@ def log_it(mode, outcome):
     if mode == "Pulse":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write("Scheduler checked for the Jobs last at : \n")
+                f.write("Scheduler checked for the Jobs last at : {now} \n")
     elif mode == "BKW":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
@@ -49,12 +49,14 @@ def log_it(mode, outcome):
 
 
 def sync_log_data_with_drive():
+    now = datetime.datetime.now()
     src_file = "/home/awara/dockersinit/logs/scheduler.txt"
     dest_file = "/home/awara/mnt/GoogleDrive/PiDumps/scheduler.txt"
 
     try:
         shutil.copy(src_file, dest_file)
-        print(f"File synced successfully from {src_file} to {dest_file}")
+        print(f"Log file synced successfully at {now}")
+        log_it("DriveSync", "Success")
     except Exception as e:
-        print(f"An error occurred while syncing files: {e}")
-
+        print(f"An error occurred while syncing files: {e} at {now}")
+        log_it("DriveSync", "Failure")
