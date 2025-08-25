@@ -46,21 +46,18 @@ def log_it(mode, outcome, Exception=None):
                 f.write(f"Failed to read Data read from BKW at {now}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred: {Exception} at {now}\n")
+                f.write(f"Exception occurred for BKA Aggregated: {Exception} at {now}\n")
 
     elif mode == "BKW-daily":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Data read from BKW at {now}\n")
+                f.write(f"Data read from BKW daily at {now}\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to read Data read from BKW at {now}\n")
+                f.write(f"Failed to read Data read from BKW Daily at {now}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred: {Exception} at {now}\n")
-        elif Exception is not None:
-            with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred: {Exception} at {now}\n")
+                f.write(f"Exception occurred for BKW Daily: {Exception} at {now}\n")
 
     elif mode == "DriveSync-BKW-daily":
         if outcome == "Success":
@@ -71,18 +68,18 @@ def log_it(mode, outcome, Exception=None):
                 f.write(f"Failed to sync BKW Daily data file at {now}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred: {Exception} at {now}\n")
+                f.write(f"Exception occurred for BKA Daily Drive sync: {Exception} at {now}\n")
 
     elif mode == "DriveSync-BKW-agg":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"File synced successfully at {now}\n")
+                f.write(f"BKW Aggregated File synced successfully at {now}\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to sync files at {now}\n")
+                f.write(f"Failed to sync BKW aggregated file at {now}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred: {Exception} at {now}\n")
+                f.write(f"Exception occurred for BKW Aggregated Drive sync : {Exception} at {now}\n")
 
 
 def sync_log_data_with_drive():
