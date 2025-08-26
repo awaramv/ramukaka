@@ -1,8 +1,8 @@
 import shutil
-import datetime
+from datetime import datetime
 import os
+from zoneinfo import ZoneInfo
 
-datetime.timezone(datetime.timedelta(hours=2))
 
 LOG_FILE = "./logs/scheduler.txt"
 BKA_DAILY_FILE = "./logs/daily_detailed_power_output.csv"
@@ -34,7 +34,7 @@ def sync_BKW_data_with_drive(mode):
 
 
 def log_it(mode, outcome, Exception=None):
-    now = datetime.datetime.now()
+    now = datetime.now(ZoneInfo("Europe/Berlin"))
     if mode == "Pulse":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
@@ -89,7 +89,7 @@ def log_it(mode, outcome, Exception=None):
 
 
 def sync_log_data_with_drive():
-    now = datetime.datetime.now()
+    now = datetime.now(ZoneInfo("Europe/Berlin"))
     src_file = "/home/awara/dockersinit/logs/scheduler.txt"
 
     try:
