@@ -2,11 +2,13 @@ import shutil
 import datetime
 import os
 
+datetime.timezone(datetime.timedelta(hours=2))
+
 LOG_FILE = "./logs/scheduler.txt"
 BKA_DAILY_FILE = "./logs/daily_detailed_power_output.csv"
 BKA_AGG_FILE = "./logs/aggregated_power_output.csv"
-# DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
-DESTINATION = "../mnt/GoogleDrive/PiDumps"
+DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
+# DESTINATION = "../mnt/GoogleDrive/PiDumps"
 
 
 def sync_BKW_data_with_drive(mode):
