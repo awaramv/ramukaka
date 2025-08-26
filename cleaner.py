@@ -15,7 +15,7 @@ def sync_BKW_data_with_drive(mode):
     if mode == "BKW-daily":
         src_file = BKA_DAILY_FILE
         try:
-            shutil.copy(src_file,
+            shutil.copy2(src_file,
                         os.path.join(DESTINATION,
                         os.path.basename(src_file)))
             log_it("DriveSync-BKW-daily", "Success")
@@ -25,7 +25,7 @@ def sync_BKW_data_with_drive(mode):
     if mode == "BKW-agg":
         src_file = BKA_AGG_FILE
         try:
-            shutil.copy(src_file,
+            shutil.copy2(src_file,
                         os.path.join(DESTINATION,
                         os.path.basename(src_file)))
             log_it("DriveSync-BKW-agg",  "Success")
@@ -93,7 +93,7 @@ def sync_log_data_with_drive():
     src_file = "/home/awara/dockersinit/logs/scheduler.txt"
 
     try:
-        shutil.copy(src_file,
+        shutil.copy2(src_file,
                     os.path.join(DESTINATION,
                     os.path.basename(src_file)))
         print(f"Log file synced successfully at {now}")
