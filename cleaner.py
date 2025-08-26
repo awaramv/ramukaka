@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 LOG_FILE = "./logs/scheduler.txt"
 BKA_DAILY_FILE = "./logs/daily_detailed_power_output.csv"
 BKA_AGG_FILE = "./logs/aggregated_power_output.csv"
-DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
+DESTINATION = "home/awara/mnt/GoogleDrive/PiDumps"
 # DESTINATION = "../mnt/GoogleDrive/PiDumps"
 
 
