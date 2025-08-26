@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 LOG_FILE = "./logs/scheduler.txt"
 BKA_DAILY_FILE = "./logs/daily_detailed_power_output.csv"
 BKA_AGG_FILE = "./logs/aggregated_power_output.csv"
-DESTINATION = "home/awara/mnt/GoogleDrive/PiDumps"
+DESTINATION = "/home/awara/mnt/GoogleDrive/PiDumps"
 # DESTINATION = "../mnt/GoogleDrive/PiDumps"
 
 
@@ -15,6 +15,7 @@ def sync_BKW_data_with_drive(mode):
     if mode == "BKW-daily":
         src_file = BKA_DAILY_FILE
         try:
+            os.makedirs(DESTINATION, exist_ok=True)
             shutil.copy2(src_file,
                         os.path.join(DESTINATION,
                         os.path.basename(src_file)))
@@ -36,6 +37,9 @@ def sync_BKW_data_with_drive(mode):
 def log_it(mode, outcome, Exception=None):
     now = datetime.now(ZoneInfo("Europe/Berlin"))
     if mode == "Pulse":
+        if outcome == "Initiate":
+            with open(LOG_FILE, "a+") as f:
+                f.write(f"{now} : Scheduler Initiated\n")
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
                 f.write(f"{now} : Scheduler checked for the Jobs\n")
