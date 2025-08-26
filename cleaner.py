@@ -31,54 +31,54 @@ def log_it(mode, outcome, Exception=None):
     if mode == "Pulse":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Scheduler checked for the Jobs last at {now} \n")
+                f.write(f"{now} : Scheduler checked for the Jobs\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Scheduler failed to check for the Jobs last at {now}\n")
+                f.write(f"{now} : Scheduler failed to check for Jobs\n")
 
     elif mode == "BKW-agg":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Data read from BKW at {now}\n")
+                f.write(f"{now} : Data read from BKW Aggregated\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to read Data read from BKW at {now}\n")
+                f.write(f"{now} : Failed to read Data read from BKW Aggregated\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred for BKA Aggregated: {Exception} at {now}\n")
+                f.write(f"{now} : Exception occurred for BKA Aggregated: {Exception}\n")
 
     elif mode == "BKW-daily":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Data read from BKW daily at {now}\n")
+                f.write(f"{now} : Data read from BKW daily\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to read Data read from BKW Daily at {now}\n")
+                f.write(f"{now} : Failed to read Data read from BKW Daily\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred for BKW Daily: {Exception} at {now}\n")
+                f.write(f"{now} : Exception occurred for BKW Daily: {Exception}\n")
 
     elif mode == "DriveSync-BKW-daily":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"BKW Daily Data file synced successfully at {now}\n")
+                f.write(f"{now} : BKW Daily Data file synced successfully\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to sync BKW Daily data file at {now}\n")
+                f.write(f"{now} : Failed to sync BKW Daily data file\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred for BKA Daily Drive sync: {Exception} at {now}\n")
+                f.write(f"{now} : Exception occurred for BKA Daily Drive sync: {Exception}\n")
 
     elif mode == "DriveSync-BKW-agg":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"BKW Aggregated File synced successfully at {now}\n")
+                f.write(f"{now} : BKW Aggregated File synced successfully\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Failed to sync BKW aggregated file at {now}\n")
+                f.write(f"{now} : Failed to sync BKW aggregated file\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"Exception occurred for BKW Aggregated Drive sync : {Exception} at {now}\n")
+                f.write(f"{now} : Exception occurred for BKW Aggregated Drive sync : {Exception}\n")
 
 
 def sync_log_data_with_drive():
