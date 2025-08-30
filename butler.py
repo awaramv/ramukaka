@@ -31,10 +31,9 @@ def read_the_BKW_aggregated():
         cleaner.log_it("BKW-daily", "Exception", Exception=e)
 
 
-schedule.every(2).minutes.do(read_the_BKW_daily)
-schedule.every(2).minutes.do(read_the_BKW_aggregated)
-schedule.every(1).hours.do(cleaner.sync_log_data_with_drive)
-
+schedule.every().day.at("23:00").do(read_the_BKW_daily)
+schedule.every().day.at("23:15").do(read_the_BKW_aggregated)
+schedule.every().day.at("23:30").do(cleaner.sync_log_data_with_drive)
 
 cleaner.log_it("Pulse", "Initiate")
 while True:
