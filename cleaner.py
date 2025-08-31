@@ -17,8 +17,7 @@ def sync_BKW_data_with_drive(mode):
         try:
             os.makedirs(DESTINATION, exist_ok=True)
             shutil.copy2(src_file,
-                        os.path.join(DESTINATION,
-                        os.path.basename(src_file)))
+                         os.path.join(DESTINATION, os.path.basename(src_file)))
             log_it("DriveSync-BKW-daily", "Success")
         except Exception as e:
             log_it("DriveSync-BKW-daily", "Exception", Exception=e)
@@ -27,8 +26,7 @@ def sync_BKW_data_with_drive(mode):
         src_file = BKA_AGG_FILE
         try:
             shutil.copy2(src_file,
-                        os.path.join(DESTINATION,
-                        os.path.basename(src_file)))
+                         os.path.join(DESTINATION, os.path.basename(src_file)))
             log_it("DriveSync-BKW-agg",  "Success")
         except Exception as e:
             log_it("DriveSync-BKW-agg", "Exception", Exception=e)
@@ -98,8 +96,7 @@ def sync_log_data_with_drive():
 
     try:
         shutil.copy2(src_file,
-                    os.path.join(DESTINATION,
-                    os.path.basename(src_file)))
+                     os.path.join(DESTINATION, os.path.basename(src_file)))
         print(f"Log file synced successfully at {now}")
         log_it("DriveSync", "Success")
     except Exception as e:
