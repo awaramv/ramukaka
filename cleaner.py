@@ -67,27 +67,38 @@ def log_it(mode, outcome, Exception=None):
             with open(LOG_FILE, "a+") as f:
                 f.write(f"{now} : Exception occurred for BKW Daily: {Exception}\n")
 
-    elif mode == "DriveSync-BKW-daily":
+    elif mode == "Weather":
         if outcome == "Success":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : BKW Daily Data file synced successfully\n")
+                f.write(f"{now} : Weather data read and saved successfully\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Failed to sync BKW Daily data file\n")
+                f.write(f"{now} : Failed to read and save weather data\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Exception occurred for BKA Daily Drive sync: {Exception}\n")
+                f.write(f"{now} : Exception occurred for Weather data read/save: {Exception}\n")
 
-    elif mode == "DriveSync-BKW-agg":
-        if outcome == "Success":
-            with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : BKW Aggregated File synced successfully\n")
-        elif outcome == "Failure":
-            with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Failed to sync BKW aggregated file\n")
-        elif Exception is not None:
-            with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Exception occurred for BKW Aggregated Drive sync : {Exception}\n")
+    # elif mode == "DriveSync-BKW-daily":
+    #     if outcome == "Success":
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : BKW Daily Data file synced successfully\n")
+    #     elif outcome == "Failure":
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : Failed to sync BKW Daily data file\n")
+    #     elif Exception is not None:
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : Exception occurred for BKA Daily Drive sync: {Exception}\n")
+
+    # elif mode == "DriveSync-BKW-agg":
+    #     if outcome == "Success":
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : BKW Aggregated File synced successfully\n")
+    #     elif outcome == "Failure":
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : Failed to sync BKW aggregated file\n")
+    #     elif Exception is not None:
+    #         with open(LOG_FILE, "a+") as f:
+    #             f.write(f"{now} : Exception occurred for BKW Aggregated Drive sync : {Exception}\n")
 
 
 def sync_log_data_with_drive():
