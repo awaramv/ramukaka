@@ -39,9 +39,8 @@ def read_current_weather_data():
         cleaner.log_it("Weather", "Exception", Exception=e)
 
 
-schedule.every().day.at("23:00").do(read_the_BKW_daily)
-schedule.every().day.at("23:15").do(read_the_BKW_aggregated)
-schedule.every().day.at("23:30").do(cleaner.sync_log_data_with_drive)
+schedule.every(1).hours.do(read_the_BKW_aggregated)
+schedule.every(1).hours.do(read_the_BKW_daily)
 schedule.every(15).minutes.do(read_current_weather_data)
 
 
