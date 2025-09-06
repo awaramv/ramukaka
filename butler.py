@@ -41,7 +41,7 @@ def read_current_weather_data():
         else:
             print(f"Failed to read weather data, status code: {response.status_code}")
             cleaner.log_it("Weather", "Failure")
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         cleaner.log_it("Weather", "Exception", Exception=e)
 
 
