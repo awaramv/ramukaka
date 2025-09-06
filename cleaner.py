@@ -32,7 +32,7 @@ def sync_BKW_data_with_drive(mode):
             log_it("DriveSync-BKW-agg", "Exception", Exception=e)
 
 
-def log_it(mode, outcome, Exception=None):
+def log_it(mode, outcome, message, Exception=None):
     now = datetime.now(ZoneInfo("Europe/Berlin"))
     if mode == "Pulse":
         if outcome == "Initiate":
@@ -51,7 +51,7 @@ def log_it(mode, outcome, Exception=None):
                 f.write(f"{now} : Data read from BKW Aggregated\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Failed to read Data read from BKW Aggregated\n")
+                f.write(f"{now} : Failed to read Data read from BKW Aggregated {message}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
                 f.write(f"{now} : Exception occurred for BKA Aggregated: {Exception}\n")
@@ -62,7 +62,7 @@ def log_it(mode, outcome, Exception=None):
                 f.write(f"{now} : Data read from BKW daily\n")
         elif outcome == "Failure":
             with open(LOG_FILE, "a+") as f:
-                f.write(f"{now} : Failed to read Data read from BKW Daily\n")
+                f.write(f"{now} : Failed to read Data read from BKW Daily {message}\n")
         elif Exception is not None:
             with open(LOG_FILE, "a+") as f:
                 f.write(f"{now} : Exception occurred for BKW Daily: {Exception}\n")
