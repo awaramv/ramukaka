@@ -14,7 +14,7 @@ def read_the_BKW_daily():
                            "Failure",
                            message=f"{response.reason}")
     except requests.exceptions.RequestException as e:
-        cleaner.log_it("BKW-daily", "Exception", Exception=e)
+        cleaner.log_it("BKW-daily", "Exception", message="", Exception=e)
 
 
 def read_the_BKW_aggregated():
