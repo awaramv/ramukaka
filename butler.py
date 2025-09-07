@@ -8,13 +8,16 @@ def read_the_BKW_daily():
     try:
         response = requests.get("http://growattreader:5000/update_daily_data")
         if response.status_code == 200:
-            cleaner.log_it("BKW-daily", "Success")
+            cleaner.log_it("BKW-daily", "Success", message="")
         else:
             cleaner.log_it("BKW-daily",
                            "Failure",
                            message=f"{response.reason}")
     except requests.exceptions.RequestException as e:
-        cleaner.log_it("BKW-daily", "Exception", message="", Exception=e)
+        cleaner.log_it("BKW-daily",
+                       "Exception",
+                       message="",
+                       Exception=e)
 
 
 def read_the_BKW_aggregated():
@@ -37,12 +40,17 @@ def read_current_weather_data():
     try:
         response = requests.get("http://mausam:5000/save_weather_data/Hannover,DE")
         if response.status_code == 200:
-            cleaner.log_it("Weather", "Success")
+            cleaner.log_it("Weather", "Success", message="")
         else:
             print(f"Failed to read weather data, status code: {response.status_code}")
-            cleaner.log_it("Weather", "Failure")
+            cleaner.log_it("Weather",
+                           "Failure",
+                           message=f"{response.reason}")
     except Exception as e:
-        cleaner.log_it("Weather", "Exception", Exception=e)
+        cleaner.log_it("Weather",
+                       "Exception",
+                       message="",
+                       Exception=e)
 
 
 schedule.every(1).hours.do(read_the_BKW_aggregated)
@@ -50,6 +58,8 @@ schedule.every(1).hours.do(read_the_BKW_daily)
 schedule.every(15).minutes.do(read_current_weather_data)
 
 
-cleaner.log_it("Pulse", "Initiate")
+cleaner.log_it("Pulse",
+               "Initiate",
+               message="")
 while True:
     schedule.run_pending()
